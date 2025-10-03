@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viswas Vinayakumar - AI Engineer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        header {
+            padding: 150px 0 100px;
+            text-align: left;
+        }
+
+        .hero-title {
+            font-size: 3.5em;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5em;
+            color: #2563eb;
+            margin-bottom: 20px;
+            font-weight: 600;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-description {
+            font-size: 1.1em;
+            color: #6b7280;
+            max-width: 700px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            border: 2px solid #2563eb;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+        }
+
+        .btn-secondary:hover {
+            background: #eff6ff;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #2563eb;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: #4b5563;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+        }
+
+        .about-highlights {
+            background: #f9fafb;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #2563eb;
+        }
+
+        .highlight-item {
+            margin-bottom: 20px;
+        }
+
+        .highlight-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-label {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .highlight-value {
+            color: #6b7280;
+        }
+
+        .education-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .education-card {
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            border-color: #2563eb;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .education-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .education-date {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .education-institution {
+            color: #6b7280;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .education-description {
+            color: #4b5563;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: #f9fafb;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: #2563eb;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .skill-card h3 {
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: #ffffff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            color: #4b5563;
+            border: 1px solid #e5e7eb;
+            font-size: 0.9em;
+        }
+
+        .experience-card {
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            border: 2px solid #e5e7eb;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            border-color: #2563eb;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .experience-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .experience-date {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .experience-company {
+            color: #6b7280;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .experience-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .experience-card li {
+            color: #4b5563;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .experience-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: #2563eb;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-title {
+            color: #1a1a1a;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: #eff6ff;
+            padding: 5px 12px;
+            border-radius: 6px;
+            color: #2563eb;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .contact-section {
+            background: #ffffff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            color: #4b5563;
+            font-size: 1.15em;
+            margin-bottom: 50px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5em;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #2563eb;
+            border-color: #2563eb;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .social-link:hover::after {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: #e5e7eb;
+            margin: 0 auto 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item-label {
+            font-size: 0.85em;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .contact-item-value {
+            color: #1a1a1a;
+            font-size: 1.05em;
+        }
+
+        .contact-item-value a {
+            color: #2563eb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item-value a:hover {
+            color: #1d4ed8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5em;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <nav>
+        <div class="nav-content">
+            <div class="logo">VV</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1 class="hero-title">Viswas Vinayakumar</h1>
+            <p class="hero-subtitle">Aspiring AI Engineer</p>
+            <p class="hero-description">
+                Full-stack developer specializing in workflow automation and web applications. Now expanding into AI/ML at 
+                University of Europe for Applied Sciences, Germany, to build next-generation intelligent systems.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
+            </div>
+        </header>
+
+        <section id="about">
+            <h2 class="section-title">About</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Developer with proven expertise in building and shipping production web applications. Successfully delivered 
+                        6+ applications and led automation projects that streamlined complex workflows at enterprise scale.
+                    </p>
+                    <p>
+                        Currently pursuing AI/ML specialization at University of Europe for Applied Sciences, Germany. Combining 
+                        hands-on development experience with advanced machine learning to create intelligent, data-driven solutions.
+                    </p>
+                    <p>
+                        Self-disciplined approach to work and life. Active fitness enthusiast and continuous learner, 
+                        always seeking new challenges to grow both personally and professionally.
+                    </p>
+                </div>
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-label">Location</div>
+                        <div class="highlight-value">Gudalur, India</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Current Focus</div>
+                        <div class="highlight-value">AI/ML Engineering</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Experience</div>
+                        <div class="highlight-value">Junior Web Developer</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Languages</div>
+                        <div class="highlight-value">English, Malayalam, Tamil</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-label">Availability</div>
+                        <div class="highlight-value">Open to International Opportunities</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-header">
+                        <h3 class="education-title">MSc Data Science - AI/ML Specialization</h3>
+                        <span class="education-date">Present</span>
+                    </div>
+                    <p class="education-institution">University of Europe for Applied Sciences, Germany</p>
+                    <p class="education-description">
+                        Advanced studies in AI and Machine Learning. Focus areas: neural networks, deep learning architectures, 
+                        and building scalable intelligent systems for real-world applications.
+                    </p>
+                </div>
+                <div class="education-card">
+                    <div class="education-header">
+                        <h3 class="education-title">B.Sc Computer Technology</h3>
+                        <span class="education-date">2021 - 2024</span>
+                    </div>
+                    <p class="education-institution">Kongunadu Arts and Science College, Coimbatore</p>
+                    <p class="education-description">
+                        Built strong foundation in algorithms, data structures, and software engineering. Final year project 
+                        selected for university-wide implementation, replacing traditional paper-based system.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Zoho Creator</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Deluge</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>AI/ML (Learning)</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">Neural Networks</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-card">
+                <div class="experience-header">
+                    <h3 class="experience-title">Junior Web Developer</h3>
+                    <span class="experience-date">May 2024 - Jan 2025</span>
+                </div>
+                <p class="experience-company">Texila Educare Healthcare and Technology, Coimbatore</p>
+                <ul>
+                    <li>Built and deployed 6 production web applications using Zoho Creator and custom Deluge scripting</li>
+                    <li>Led 4 enterprise automation projects from requirements gathering to deployment</li>
+                    <li>Architected Talent Acquisition Tool automating complete 23-stage hiring pipeline—reducing manual work by 70%</li>
+                    <li>Recognized with Special Award for exceptional technical contribution and project delivery</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">Key Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 class="project-title">Quiz Hub</h3>
+                    <p class="project-description">
+                        Full-featured quiz management platform with secure authentication and role-based access control. 
+                        Includes faculty dashboard for quiz creation, student assignment, and performance analytics. 
+                        Adopted university-wide as official assessment tool.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">Talent Acquisition Tool</h3>
+                    <p class="project-description">
+                        Enterprise-grade recruitment automation system managing end-to-end hiring process. Handles candidate 
+                        sourcing, interview scheduling, background verification, visa processing, and automated offer letter 
+                        generation. Reduced hiring cycle time by 60%.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Zoho Creator</span>
+                        <span class="tech-tag">Deluge</span>
+                        <span class="tech-tag">Automation</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">Fitness Castle Website</h3>
+                    <p class="project-description">
+                        Modern, responsive fitness website featuring custom cursor interactions and smooth animations. 
+                        Clean UI/UX design focused on user engagement and seamless navigation experience.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">UI/UX</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-content">
+                <p>
+                    Open to opportunities in AI/ML engineering, full-stack development roles, and collaborative projects. 
+                    Let's discuss how we can work together to build something impactful.
+                </p>
+                
+                <div class="social-links">
+                    <a href="https://github.com/Viswas-Vinayakumar" class="social-link" target="_blank" title="GitHub">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/viswas-vinayakumar-5659aa228/" class="social-link" target="_blank" title="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a href="https://x.com/Vichu_learns" class="social-link" target="_blank" title="Twitter">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/viswasvinayakumar/" class="social-link" target="_blank" title="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="mailto:ViswasVinayakumar@gmail.com" class="social-link" title="Email">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg>
+                    </a>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-item-label">Email</div>
+                        <div class="contact-item-value">
+                            <a href="mailto:ViswasVinayakumar@gmail.com">ViswasVinayakumar@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-label">Phone</div>
+                        <div class="contact-item-value">
+                            <a href="tel:+919344210925">+91 93442 10925</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-label">Location</div>
+                        <div class="contact-item-value">Gudalur, India</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Viswas Vinayakumar. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        resize();
+        window.addEventListener('resize', resize);
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.color = '#2563eb';
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particles = [];
+            const particleCount = Math.min(50, Math.floor((canvas.width * canvas.height) / 15000));
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach((particle, i) => {
+                particle.update();
+                particle.draw();
+
+                particles.slice(i + 1).forEach(otherParticle => {
+                    const dx = particle.x - otherParticle.x;
+                    const dy = particle.y - otherParticle.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 120) {
+                        ctx.strokeStyle = `rgba(37, 99, 235, ${0.2 * (1 - distance / 120)})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particle.x, particle.y);
+                        ctx.lineTo(otherParticle.x, otherParticle.y);
+                        ctx.stroke();
+                    }
+                });
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
